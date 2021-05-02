@@ -1,0 +1,580 @@
+#include<iostream.h>
+#include<conio.h>
+#include<dos.h>
+#include<iomanip.h>
+#include<graphics.h>
+#include<stdio.h>
+#include<string.h>
+#include<fstream.h>
+#include<stdlib.h>
+#include<ctype.h>
+#include<process.h>
+  class movie
+{
+private:
+
+		 char Name[20];
+
+		int ch;
+		int theatre ;
+		int showtime;
+		int Price;
+		int row2, column;
+		int answer;
+		int column2;
+
+		     int rows ;
+		      int columns;
+		     int Num_Rows;
+		    char  map[11][11];
+		    int MenuChoice;
+		    int Quit;
+
+public:
+struct menu
+{
+int cuisine;
+int quantity;
+float price;
+float total;
+}
+ cust[3];
+	      int id ;
+		 void getdata();
+	     void putdata();
+	      void snackbar();
+		 char* retname()
+	     {return Name;}
+	     int Show_Menu();
+	     void Show_Chart ();
+	     movie(){
+	  rows = 11;
+	  columns = 11;
+	  Num_Rows = 11;
+	  Quit=1; }
+	   int  genid();
+};
+	  int movie::genid()
+	     {  static int id;
+	      return ++id;}
+
+	      int movie::Show_Menu()
+{
+    int MenuChoice;
+	cout << endl << endl;
+	cout << " \tMAIN MENU\n";
+
+	cout << " 1. Purchase a Ticket.\n";
+	cout << " 2. View Available Seats.\n";
+
+	cout << " 3. Quit the program.\n";
+	cout << "_____________________\n\n";
+	cout << "Please enter your choice: ";
+	cin >> MenuChoice;
+	cout << endl << endl;
+    return MenuChoice;
+}
+
+void movie::Show_Chart ()
+{
+    cout << "\tSeats" << endl;
+    cout << "      0 1 2 3 4 5 6 7 8 9 10 \n";
+	for (int count = 0; count < 11;++count)
+	{
+	    cout << endl << "Row " << (count );
+	    for (int count2 = 0; count2 < 11;++count2)
+	    {
+		cout << " " <<  map [count] [count2];
+	    }
+	}       }
+    void movie::snackbar()
+       {
+	l1:
+clrscr();
+	int ch1,rec_count;
+		char ans;
+cout<<"\n\tRestaurant Details using structure\n";
+cout<<"\n\t-----------------------------------\n";
+cout<<"\n\t\tMENU\n";
+cout<<"\n1.Add Records \t2.Exit\n";
+cout<<"\n\tEnter your choice:";
+cin>>ch1;
+if (ch1==1)
+{
+clrscr();
+cout<<"\n\tADDING BILL RECORDS";
+cout<<"Enter bill for customer ";
+cout<<"\t\t*** SNACKBAR ***";
+cout<<"\n\t\t------------------------------\n";
+cout<<"\t\tnear hamdan street,AbuDhabi\n ";
+cout<<"\t\tStaff: Reyna Rafique\n";
+for (int i=0;i<3;i++)
+cout<<"\t\t   menu    ";
+cout<<"\n \t1.Dynamite shrimps $20.00 \n";
+cout<<"\n\t2.French Fries     $8.50\n";
+cout<<"\n\t3.Hamburger        $12.50\n";
+cout<<"\n\t4.ANY DRINK        $5.25\n";
+cout<<"\n\t5.Salad            $14.50\n";
+l2:
+cout<<"Enter your option:";
+cin>>cust[i].cuisine;
+cout<<"\n\t sno.     Cuisine         quantity ";
+
+if (cust[i].cuisine==1)
+{
+cout<<"\n\t1.     Dynamite shrimps   ";
+cin>>cust[i].quantity;
+
+cout<<"TOTAL "<<cust[i].quantity*20.00;
+}
+else if (cust[i].cuisine==2)
+{
+cout<<"\n\t2.  French fries     ";
+cin>>cust[i].quantity;
+cout<<"TOTAL "<<cust[i].quantity*8.50;}
+else if (cust[i].cuisine==3)
+{
+cout<<"\n\t3.    Hamburger      ";
+cin>>cust[i].quantity;
+cout<<"TOTAL  "<<cust[i].quantity*12.50;}
+else if (cust[i].cuisine==4)
+{
+cout<<"\n\t4.    Any drink      ";
+cin>>cust[i].quantity;
+cout<<"TOTAL "<<cust[i].quantity*5.25; }
+else if (cust[i].cuisine==5)
+ {
+cout<<"5.    Salad          ";
+
+cin>>cust[i].quantity;
+cout<<"TOTAL "<<cust[i].quantity*14.50;  }
+else{ cout<<"Wrong choice!!!";
+	 cout<<"enter a valid one";
+
+	 char ch;
+cout<<"want to enter more?(y/n)";
+cin>>ch;
+if(ch=='y'||ch=='Y')
+goto l1;
+else
+cout<<"Thank you for coming";
+}
+if (ch1==2)
+exit (1);
+}
+getch();
+}
+
+
+ void movie::getdata()
+ {      clrscr();
+	 textcolor(WHITE);
+	id=genid();
+	cout<<"\n\tCustomer ID : "<<id;
+
+	cout<<"\n\tEnter the customer name :";
+	gets(Name);
+
+
+	cout<<"\n\tSelect the Movie you would like to watch :";
+	cout<<"\n\n1.TITANIC 2.LIFE OF PI 3.INFINITY WAR 4.DESPICABLES ME 2 :";
+	cin>>ch;
+
+	cout<<" \n\tEnter the theatre :";
+	cout<<"\n 1.ROYAL CINEMAS 2.VOX CINEMAS 3.ELDORADO CINEMAS 4.NATIONAL CINEMAS:";
+	cin>>theatre;
+
+       cout<<" \n\tThe approximate price is :";
+       Price=20;
+       cout<<Price;
+	cout<<"\n\t Select the showtime you prefer :";
+		cout<<"\n 1)7:00am  2.9:00amS 3.6:30pm 4.7:30pm :";
+	cin>>showtime;
+       cout << "\t*********************************************************" << endl;
+    cout << "\t*                                                       *" << endl;
+
+    cout<<" \t                  BOOK YOUR TICKET          "<<endl;
+    cout << endl;
+    cout << "\t*                                                       *" << endl;
+    cout << "\t*********************************************************" << endl;
+    cout << endl << endl;
+
+
+    for (int i = 0; i < rows; i++)
+	{
+	    for (int j = 0; j < columns; j++)
+		map [i][j] = '#';
+	}
+int choice;
+	l3:
+	choice = Show_Menu();
+	switch (choice)
+	{
+
+	    case 1:	do
+		{
+		    cout << "Please select the row you would like to sit in: ";
+		    cin >> row2;
+		    cout << "Please select the seat you would like to sit in: ";
+		    cin >> column2;
+		    if (map [row2] [column2] == '*')
+			{
+			    cout << "Sorry that seat is sold-out, Please select a new seat.";
+			    cout << endl;
+			}
+		    else
+		    {
+
+
+			cout << "Confirm Purchase? Enter (1 = YES ,2=NO)";
+			cin>>answer;
+
+			if (answer == 1)
+			{
+			    cout << "Your ticket purchase has been confirmed." << endl;
+			    map [row2][column2] = '*';
+			}
+			else if (answer == 2)
+			{
+			    cout << "Would you like to look at another seat? (1 = YES / 2 = NO)";
+			    cout << endl;
+			    cin >> Quit;
+			}
+
+			cout << "Would you like to look at another seat?(1 = YES / 2 = NO)";
+			cin >> Quit;
+		    }
+		}
+		while (Quit == 1);
+
+
+
+
+
+
+
+	    case 2:
+		cout << "View Available Seats\n\n";
+		Show_Chart ();
+		break;
+
+	    case 3:
+		cout << "quit\n"; exit(0);
+		break;
+	    default : cout << "Error input\n";
+	}
+
+
+}
+
+
+void movie::putdata()
+{ textcolor(YELLOW);
+cprintf("\n$$$$$$$$$$$$$$$");
+textcolor(YELLOW);
+cprintf("BOOKING DETAILS ");
+  textcolor(YELLOW);
+
+cprintf("$$$$$$$$$$$$$$$\n");
+
+ cout<<"\n\n ID NO:"<<id;
+ cout<<"\nName :"<<Name;
+ cout<<"\nMovie :";
+	switch(ch)
+	{
+	case 1:cout<<"Titanic";break;
+	case 2:cout<<"Life Of Pi";break;
+	case 3:cout<<"Infinity War";break;
+	case 4:cout<<"Despicables Me 2";break;
+	default:cout<<"Not found";  break;
+	}
+ cout<<"\nTheatre :" ;
+ switch(theatre)
+ {
+ case 1:cout<<"ROYAL CINEMAS ";    break;
+  case 2:cout<<"VOX CINEMAS";           break;
+  case 3: cout<<" ELDORADO CINEMAS ";            break;
+  case 4:cout<<" NATIONAL CINEMAS";                 break;
+  default:cout<<"wrong character ";              break; }
+ cout<<"\nPrice :" <<20;
+ cout<<"\nshowtime no :";
+   switch(showtime)
+ {
+ case 1:cout<<"7:00 am ";   break;
+  case 2:cout<<"9:00 am ";           break;
+  case 3: cout<<" 6:30 pm ";            break;
+  case 4:cout<<" 7:30 pm";                 break;
+  default:cout<<"wrong character ";            break;}
+  getch();
+
+ }
+
+
+movie tckt;
+
+
+void Read()
+{ fstream f;
+
+  f.open("booking.dat",ios::in|ios::binary);
+  f.seekg(0);
+
+  while(f.read((char*)&tckt,sizeof(tckt)))
+	{
+		 tckt.putdata();
+	}
+	 getch();
+	f.close() ;
+}
+
+void Create()
+{  clrscr() ;
+  fstream f;
+  movie tckt;
+  int n,i=0;
+  f.open("booking.dat",ios::out|ios::binary);
+  f.seekg(0);
+  cout<<"\n\tEnter number of bookings to be displayed ";
+  cin>>n;
+  while(i<n)
+	  {
+		     tckt.getdata();
+		     f.write((char*)&tckt,sizeof(tckt));
+		     i++;
+	  }
+ getch();
+  f.close();
+
+}
+
+void Delete()
+{
+clrscr();
+fstream f,t;
+ f.open("booking.dat",ios::in|ios::binary);
+ t.open("tempbooking.dat",ios::out|ios::binary);
+ f.seekg(0);
+ int n;
+ int flag=0;
+ cout<<"\n\tEnter the id no. of the person whose ticket is to be deleted: ";
+ cin>>n;
+ while(f.read((char*)&tckt,sizeof(tckt)))
+{ if(tckt.id!=n)
+ {t.write((char*)&tckt,sizeof(tckt));}
+  else
+ {flag=1;
+ cout<<"\n\tRecord Deleted"; }
+ }
+
+ if(flag==0)
+ cout<<"\n\tBooking not found";
+ f.close();
+ t.close();
+ remove("booking.dat");
+ rename("tempbooking.dat","booking.dat");
+ }
+ void Modify()
+{
+  clrscr();
+char n[100];
+cout<<"Enter Name that should be searched:";
+gets(n);
+  fstream fil;
+  fil.open("booking.dat",ios::in| ios::out|ios::binary);
+  if(!fil) { cout<<"File not Found"; exit(0); }
+  else {
+     while (fil.read((char*)&tckt, sizeof(tckt))){
+      { if(strcmpi(tckt.retname(),n)==0)
+       {
+	 fil.seekg(0,ios::cur);
+	 cout<<"Enter New Record.."<<endl;
+	 tckt.getdata();
+	 fil.seekp(fil.tellg() - sizeof(tckt));
+	 fil.write((char*)&tckt, sizeof(tckt));
+      }
+    else { cout<<"Press Any Key....For Search"<<endl; getch(); }
+   }
+  }
+    fil.close();
+    Read();
+  }
+
+}
+
+
+
+void Ascending()
+{
+   clrscr();
+  fstream f("booking.dat",ios::binary|ios::in);
+  movie m[100];
+  if (!f){
+    cout<<"\nFile NOT Exists!!!";
+    getch();
+    return;
+  }
+  int n=0;
+  while(f.read((char*)&m[n],sizeof(movie)))
+    n++;
+  movie temp;
+  int i,j;
+  for (i=1;i<n;i++)
+    for(j=0;j<n;j++)
+      if (m[i].genid()>m[j+1].genid()){
+	  temp=m[j];
+	  m[j]=m[j+1];
+	  m[j+1]=temp;
+      }
+      f.close();
+      f.open("tempbooking.dat.dat",ios::out|ios::binary);
+      i=0;
+      while(i<n){
+	f.write((char*)&m[i],sizeof(movie));
+	i++;
+      }
+      cout<<"\nFile Sorted in ASCENDING Order";
+
+      f.close();
+	for(i=0;i<n;i++)
+       m[i].putdata();
+       getch();
+
+ }
+
+ void Search()
+{clrscr();
+ fstream f;
+  int flag=0;
+  f.open("booking.dat",ios::in|ios::binary);
+  f.seekg(0);
+  char c[100];
+  cout<<" Enter your name: " ;
+  gets(c);
+  while(f.read((char*)&tckt,sizeof(tckt)))
+      { if(strcmpi(tckt.retname(),c)==0)
+      { tckt.putdata();
+	     flag=1;
+	     break;
+	}
+
+  }
+
+  if(flag==0)
+  cout<<" Record not found!!! ";
+  f.close();
+}
+
+ void main()
+{ clrscr();
+
+int gdriver=DETECT, gmode;
+  initgraph(&gdriver,&gmode,"C:\\TurboC3\\BGI");
+
+	setcolor(YELLOW);
+	settextstyle(7,0,5);
+	outtextxy(230,50,"WELCOME"); delay(1000);
+	settextstyle(7,0,5);
+	setcolor(YELLOW);
+	outtextxy(290,150,"TO"); delay(1000);
+	settextstyle(7,0,5);
+	setcolor(YELLOW);
+	outtextxy(245,250,"ONLINE MOVIE "); delay(1000);
+	setcolor(YELLOW);
+	settextstyle(7,0,5);
+	for(int i=-225,j=639;i<71;i++,j--)
+	{
+	  outtextxy(i,360,"TICKET"); outtextxy(j,360,"BOOKING");
+	  delay(15); setcolor(BLACK);
+	  outtextxy(i,360,"TICKET"); outtextxy(j,360,"BOOKING");
+	  setcolor(WHITE);
+	}
+	outtextxy(70,360,"TICKET");
+	outtextxy(j,360,"BOOKING"); delay(1000);
+	i=1;
+	setbkcolor(BLACK);
+	do
+	{
+	  setcolor(i);
+	  settextstyle(7,0,5);
+	  outtextxy(230,50,"WELCOME"); delay(100);
+	  settextstyle(7,0,5);
+	  setcolor(i+1);
+	  outtextxy(290,150,"TO"); delay(100);
+	  settextstyle(7,0,5);
+	  setcolor(i+2);
+	  outtextxy(245,250,"ONLINE MOVIE "); delay(100);
+	  setcolor(i+3);
+	  settextstyle(7,0,5);
+	  outtextxy(70,360,"TICKET ");
+	  outtextxy(j,360,"BOOKING"); delay(100);
+	  i++;
+	} while(i!=13);
+	delay(1000); cleardevice();
+	    closegraph();
+  getch();
+  clrscr();
+
+ char ans;
+ int choice;
+
+ do
+{  clrscr();
+ cout<<"\n";
+  textcolor(CYAN);
+    cprintf("WELCOME TO WWW.BOOKYOURMOVIE.COM");
+cout<<"\n";
+textcolor(YELLOW) ;
+ cprintf("\n**********************************************************");
+cout<<endl;
+textcolor(MAGENTA);
+ cprintf("\nNow you can book your tickets anywhere and at anytime!\n");
+ textcolor(YELLOW+BLINK);
+cout<<"\n";
+ cprintf("\nNOW SHOWING!!!!!");
+cout<<"\n";
+ textcolor(RED);
+ cprintf("\n1.Titanic 2.Life Of Pi 3.Infinity Wars 4.Despicables Me 2 \n");
+cout<<"\n";
+textcolor(YELLOW);
+ cprintf("************************************************************");
+ cout<<"\n\n";
+  textcolor(LIGHTGRAY);
+
+   cprintf("----------   MENU ------------- ");
+  cout<<"\nEnter  1- TO BOOK A TICKET                     ";
+  cout<<"\n       2- TO DISPLAY BOOKED TICKETS          ";
+  cout<<"\n       3- TO ARRANGE THE TICKETS IN ASCENDING ORDER                         ";
+  cout<<"\n       4- TO DELETE A BOOKING                            ";
+  cout<<"\n       5- TO MODIFY A BOOKING                           ";
+  cout<<"\n       6- TO SEARCH FOR TICKETS OF A MOVIE        ";
+  cout<<"\n       7-PREORDER YOUR SNACKS!!!!                 ";
+  cout<<"\n       8- TO EXIT ";
+ cout<<"\n ENTER YOUR OPTION: ";
+  cin>>choice;
+
+ switch(choice)
+
+{ case 1: Create();
+		     break ;
+  case 2: Read();
+		      break;
+  case 3: Ascending();
+		      break;
+
+  case 4: Delete();
+		      break;
+  case 5: Modify();
+		      break;
+
+  case 6: Search();
+		      break;
+  case 7: tckt.snackbar();
+		      break;
+  case 8:   exit(0);   break;
+ }
+  cout<<"\n\tDo you want to continue: ";
+  cin>>ans;
+ }while(ans=='Y'||ans=='y');
+
+ cout<<" Thank you for choosing us. Hope you had a wonderful time ";
+ }
